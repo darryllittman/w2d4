@@ -63,5 +63,18 @@ def largest_contiguous_subsum_p2(list)
 end
 
 def lcs(list)
+  current_subsum = 0
+  largest_subsum = 0
 
+  list.each do |number|
+    current_subsum = number + current_subsum
+
+    if current_subsum > largest_subsum
+      largest_subsum = current_subsum
+    else
+      current_subsum = 0 if current_subsum < 0
+    end
+  end
+
+  largest_subsum
 end
