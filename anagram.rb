@@ -25,3 +25,17 @@ end
 def anagram_p3?(word1, word2)
   word1.chars.sort == word2.chars.sort
 end
+
+def anagram_p4?(word1, word2)
+  word_hash = Hash.new { |h, k| h[k] = 0 }
+
+  word1.chars.each do |letter|
+    word_hash[letter] += 1
+  end
+
+  word2.chars.each do |letter|
+    word_hash[letter] += 1
+  end
+
+  word_hash.values.all? { |value| value.even? }
+end
